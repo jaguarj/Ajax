@@ -1,14 +1,25 @@
-console.log("I'm ready! url = ")
 const url = 'j1.json';
 let data = '';
 
-function myJson(){
-    fetch(url)
-    .then(rep => rep.json())
-    .then(json => {
-        data = json;
-        console.log("data", data)
-    })
+const localData = localStorage.getItem('temp1');
+
+if (!localData) {
+    console.log("!localData")
+    myJson();
+    // console.log("Saved to local storage")
+} else {
+    data = JSON.parse(localData)
+    // console.log(data)
 }
 
-myJson();
+function myJson(){
+    fetch(url)
+    .then(res => res.text())
+    .then(json => {
+        data = JSON.parse(json);
+        // NOTE: LocalStorage will hold string data.
+        let str = JSON.stringify(data);
+        localStorage.setItem('temp1', str);
+        // console.log("1. localData",localData);
+    })
+}
