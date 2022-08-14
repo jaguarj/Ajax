@@ -4,6 +4,100 @@
         "first_name": "josh",
         "last_name": "seipel",
         "age": 39,
+        "friends": 5,
+        "status": false,
+        "social_media": [
+            {
+                "type": "facebook",
+                "handle": "https://facebook.com/josh"
+            },
+            {
+                "type": "twitter",
+                "handle": "https://twitter.com/josh"
+            },
+            {
+                "type": "github",
+                "handle": "https://github.com/jaguarj"
+            }
+
+        ]
+    },
+    {
+        "id": 124,
+        "first_name": "kim",
+        "last_name": "gilbert",
+        "age": 19,
+        "friends": 200,
+        "status": false,
+        "social_media": [
+            {
+                "type": "facebook",
+                "handle": "https://facebook.com/josh"
+            },
+            {
+                "type": "twitter",
+                "handle": "https://twitter.com/josh"
+            },
+            {
+                "type": "github",
+                "handle": "https://github.com/jaguarj"
+            }
+
+        ]
+    },
+    {
+        "id": 125,
+        "first_name": "james",
+        "last_name": "white",
+        "age": 23,
+        "friends": 22,
+        "status": true,
+        "social_media": [
+            {
+                "type": "facebook",
+                "handle": "https://facebook.com/josh"
+            },
+            {
+                "type": "twitter",
+                "handle": "https://twitter.com/josh"
+            },
+            {
+                "type": "github",
+                "handle": "https://github.com/jaguarj"
+            }
+
+        ]
+    },
+    {
+        "id": 126,
+        "first_name": "mike",
+        "last_name": "douglas",
+        "age": 30,
+        "friends": 12,
+        "status": false,
+        "social_media": [
+            {
+                "type": "facebook",
+                "handle": "https://facebook.com/josh"
+            },
+            {
+                "type": "twitter",
+                "handle": "https://twitter.com/josh"
+            },
+            {
+                "type": "github",
+                "handle": "https://github.com/jaguarj"
+            }
+
+        ]
+    },
+    {
+        "id": 127,
+        "first_name": "stephanie",
+        "last_name": "jones",
+        "age": 39,
+        "friends": 12,
+        "status": true,
         "social_media": [
             {
                 "type": "facebook",
