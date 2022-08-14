@@ -1,0 +1,23 @@
+[
+    {
+        "id": 123,
+        "first_name": "josh",
+        "last_name": "seipel",
+        "age": 39,
+        "social_media": [
+            {
+                "type": "facebook",
+                "handle": "https://facebook.com/josh"
+            },
+            {
+                "type": "twitter",
+                "handle": "https://twitter.com/josh"
+            },
+            {
+                "type": "github",
+                "handle": "https://github.com/jaguarj"
+            }
+
+        ]
+    }
+]

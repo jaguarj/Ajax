@@ -17,9 +17,12 @@ function myJson(){
     .then(res => res.text())
     .then(json => {
         data = JSON.parse(json);
+        console.log("data", data)
         // NOTE: LocalStorage will hold string data.
         let str = JSON.stringify(data);
         localStorage.setItem('temp1', str);
         // console.log("1. localData",localData);
     })
 }
+
+myJson();
