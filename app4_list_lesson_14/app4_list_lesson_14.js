@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             '<ul>' +
                 social.map(function (link) {
                     console.log('link', link)
-                    return `<li><a href=#>` + link.handle + `</a></li>`;
+                    return `<li>${link.type}: <a href=#>${link.handle}</a></li>`;
                 }).join('') +
             '</ul>';
 
