@@ -25,11 +25,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function makeList(item){
         const div = document.createElement("div");
-        div.innerHTML = `User: ${item.first_name} ${item.last_name}`;
+        div.id = `${item.id}`;
+        div.classList = 'userInfo';
+        // div.innerHTML = `User: ${item.first_name} ${item.last_name}`;
+        div.innerHTML = formatUsername(item.first_name, item.last_name);
         output.append(div);
+        // Added helper function to propperly handle a user's name
+        // with correct capitalization. 
+        // TODO: To take it further, check for spaces inbetween names,
+        // then, extract the middle names or spaced names, to make those
+        // capitalized as well. 
+        formatUsername(item.first_name, item.last_name);
     }
 
+    // Helper Functions ==================================
 
+    function formatUsername(firstName, lastName) {
+        const formattedUsername = 
+        firstName.charAt(0).toUpperCase()
+        + firstName.slice(1,firstName.length) 
+        + " " 
+        + lastName.charAt(0).toUpperCase() 
+        + lastName.slice(1,lastName.length);
+        // console.log(fN, lN)
+        return `User: ${formattedUsername}`
+    }
+
+    // ====================================================
 
 
 
