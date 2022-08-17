@@ -1,6 +1,11 @@
 :root {
     --arial: Arial;
     --font-color-white: white;
+
+    --active-status: #3FD99B;
+    --active-status-border: cornflowerblue;
+
+    --standard-blue-bg: cornflowerblue;
 }
 
 body, ::before, ::after {
@@ -10,7 +15,7 @@ body, ::before, ::after {
 }
 
 .userInfo {
-    background: cornflowerblue;
+    background: var(--standard-blue-bg);
     margin: 10px;
     padding: 10px;
     border-radius: 2px;
@@ -22,4 +27,16 @@ body, ::before, ::after {
 .userInfo .friendsList {
     margin-top: 10px;
 }
+
+.active {
+    background: var(--active-status);
+    animation: active-user .3s cubic-bezier(.41,0,.61,.99) forwards alternate;
+}
+
+@keyframes active-user {
+    0% {border-left: 0px solid green;}
+    100% {border-left: 10px solid green;}
+};
+
+
 

@@ -27,6 +27,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const div = document.createElement("div");
         div.id = `${item.id}`;
         div.classList = "userInfo";
+        if (item.status === true) {
+            div.classList.add("active");
+        }
+       
         div.innerHTML = `<span>${formatUsername(item.first_name, item.last_name)}</span>`;
 
         const divFriends = document.createElement("div");
