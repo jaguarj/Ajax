@@ -25,8 +25,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function makeList(item){
         const div = document.createElement("div");
-        div.id = `${item.id}`;
+        div.id = `${item.id}_user`;
         div.classList = "userInfo";
+
         if (item.status === true) {
             div.classList.add("active");
         }
@@ -34,16 +35,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
         div.innerHTML = `<span>${formatUsername(item.first_name, item.last_name)}</span>`;
 
         const divFriends = document.createElement("div");
-        divFriends.id = `${item.id}`;
+        divFriends.id = `${item.id}_user_friends_list`;
         divFriends.classList = "friendsList";
         divFriends.innerHTML = `<span>Friends: </span> <span class="friendsCount">${item.friends}</span>`;
 
-        // const friendsContainer = document.createElement("div");
-        // friendsContainer.classList = "friendsContainer";
-        // friendsContainer.innerHTML = `Friends: ${Number(item.friends)}`
+       const formatUserSocialMedia = (social) => {
+            let html = 
+            '<ul>' +
+                social.map(function (link) {
+                    console.log('link', link)
+                    return `<li>` + link.handle + `</li>`;
+                }).join('') +
+            '</ul>';
+
+            return html
+        }
+
+        const divSocialMedia = document.createElement("div");
+        divSocialMedia.id = `${item.id}_user_social_media_list`;
+        divSocialMedia.classList = "socialMediaList";
+        divSocialMedia.innerHTML = `<span>Social Media: </span> <div class="socialMedia">${formatUserSocialMedia(item.social_media)}</div>`;
 
         output.append(div);
         div.append(divFriends);
+        div.append(divSocialMedia);
+
+
 
         // const userDiv = document.querySelectorAll(".userInfo")
         // userDiv.appendChild(friendsContainer);
