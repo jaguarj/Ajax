@@ -26,21 +26,37 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function makeList(item){
         const div = document.createElement("div");
         div.id = `${item.id}`;
-        div.classList = 'userInfo';
-        // div.innerHTML = `User: ${item.first_name} ${item.last_name}`;
-        div.innerHTML = formatUsername(item.first_name, item.last_name);
+        div.classList = "userInfo";
+        div.innerHTML = `<span>${formatUsername(item.first_name, item.last_name)}</span>`;
+
+        const divFriends = document.createElement("div");
+        divFriends.id = `${item.id}`;
+        divFriends.classList = "friendsList";
+        divFriends.innerHTML = `<span>Friends: </span> <span class="friendsCount">${item.friends}</span>`;
+
+        // const friendsContainer = document.createElement("div");
+        // friendsContainer.classList = "friendsContainer";
+        // friendsContainer.innerHTML = `Friends: ${Number(item.friends)}`
+
         output.append(div);
-        // Added helper function to propperly handle a user's name
-        // with correct capitalization. 
-        // TODO: To take it further, check for spaces inbetween names,
-        // then, extract the middle names or spaced names, to make those
-        // capitalized as well. 
-        formatUsername(item.first_name, item.last_name);
+        div.append(divFriends);
+
+        // const userDiv = document.querySelectorAll(".userInfo")
+        // userDiv.appendChild(friendsContainer);
+
+
+        
     }
 
     // Helper Functions ==================================
 
     function formatUsername(firstName, lastName) {
+        // Added helper function to propperly handle a user's name
+        // with correct capitalization. 
+        // TODO: To take it further, check for spaces inbetween names,
+        // then, extract the middle names or spaced names, to make those
+        // capitalized as well. 
+
         const formattedUsername = 
         firstName.charAt(0).toUpperCase()
         + firstName.slice(1,firstName.length) 
