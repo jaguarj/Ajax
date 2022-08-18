@@ -76,6 +76,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         output.append(div);
         div.append(divFriends);
         div.append(divSocialMedia);
+
+        const removeBtn = document.createElement("span");
+        removeBtn.classList = "remove-btn";
+        removeBtn.textContent = "Delete";
+        div.append(removeBtn);
     };
 
     // Helper Functions ==================================

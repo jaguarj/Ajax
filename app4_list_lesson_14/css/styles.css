@@ -6,6 +6,7 @@
     --active-status-border: cornflowerblue;
 
     --standard-blue-bg: cornflowerblue;
+    --standard-red: red;
 }
 
 *, ::before, ::after {
@@ -24,6 +25,22 @@
 
 .userInfo .friendsList {
     margin-top: 10px;
+}
+
+.userInfo .remove-btn {
+    background: var(--standard-red);
+    padding: 10px;
+    width: auto;
+    border-radius: 50px;
+    border: 2px solid var(--standard-red);
+    display: inline-block;
+    margin: 10px 0px;
+}
+
+.remove-btn:hover {
+    background: white;
+    color: var(--standard-red);
+    cursor: pointer;
 }
 
 .active {
