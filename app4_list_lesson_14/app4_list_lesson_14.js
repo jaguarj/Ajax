@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     
     // Making myList lesson 15.
     let myList = [];
+    console.log(myList)
     let localData = localStorage.getItem("myList");
 
     if(localData) {
@@ -26,35 +27,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // function getJson() {
-    //     fetch(jsonUrl)
-    //     .then(resp => resp.json())
-    //     .then(jsonData => {
-    //         myList = jsonData;
-    //         maker();
-    //     })
-
-    //     console.log("myList data: ",myList)
-    // }
-
-    // getJson();
-
     function maker(){
         output.innerHTML = "";
-        myList.forEach(elm => {
-            makeList(elm);
+        myList.forEach((elm,index) => {
+            makeList(elm, index);
         });
-    }
+    };
 
-    function makeList(item){
+    function makeList(item, index){
         const div = document.createElement("div");
         div.id = `${item.id}_user`;
         div.classList = "userInfo";
 
         if (item.status === true) {
             div.classList.add("active");
+        } else {
+            div.classList.add("inactive")
         }
-        // Username format   
+
+        div.addEventListener("click",(e) => {
+            div.classList.toggle("active");
+            div.classList.toggle("inactive");
+
+            if(div.classList.contains("active")){
+                myList[index].status = true;
+            } else {
+                myList[index].status = false;
+            }
+
+            localStorage.setItem("myList", JSON.stringify(myList));
+
+            console.log(myList)
+        });
+
+        // Username format
         div.innerHTML = `<span>${formatUsername(item.first_name, item.last_name)}</span>`;
         // Friends list/count
         const divFriends = document.createElement("div");

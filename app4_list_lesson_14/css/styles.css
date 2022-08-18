@@ -31,6 +31,10 @@
     animation: active-user .3s cubic-bezier(.41,0,.61,.99) forwards alternate;
 }
 
+.inactive {
+    background: coral;
+}
+
 @keyframes active-user {
     0% {border-left: 0px solid green;}
     100% {border-left: 10px solid green;}
