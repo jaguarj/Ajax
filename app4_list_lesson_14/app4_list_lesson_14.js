@@ -3,15 +3,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // without waiting for images, stylesheets.
     // TODO: Create a function to check the state of the DOM.
     // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
-    console.log("app4_list_lesson_14.js is ready!")
-    
+
     const jsonUrl = "/app4_list_lesson_14/app4_list_lesson_14.json";
     const output = document.querySelector(".output");
     output.textContent = "Loading...";
-    
+
+    // Reload JSON Data Button
+    const reloadBtn = document.createElement("button");
+    reloadBtn.setAttribute("type", "button")
+    reloadBtn.textContent = "Reload JSON Data";
+    document.body.prepend(reloadBtn)
+    reloadBtn.addEventListener("click",reloadJSONData);
+
     // Making myList lesson 15.
     let myList = [];
-    console.log(myList)
     let localData = localStorage.getItem("myList");
 
     if(localData) {
@@ -23,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         .then(jsonData => {
             myList = jsonData;
             maker();
-            localStorage.setItem("myList", JSON.stringify(myList));
+            saveToStorage();
         });
     }
 
@@ -55,9 +60,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 myList[index].status = false;
             }
 
-            localStorage.setItem("myList", JSON.stringify(myList));
-
-            console.log(myList)
+            saveToStorage();
         });
 
         // Username format
@@ -77,10 +80,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
         div.append(divFriends);
         div.append(divSocialMedia);
 
+        // Remove item from list
         const removeBtn = document.createElement("span");
         removeBtn.classList = "remove-btn";
         removeBtn.textContent = "Delete";
         div.append(removeBtn);
+        removeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            console.log(index)
+
+            div.remove();
+            myList.splice(index, 1)
+            saveToStorage();
+
+        })
     };
 
     // Helper Functions ==================================
@@ -109,6 +122,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }).join("");
 
         return html
+    };
+
+    function saveToStorage(){
+        console.log("saveToStorage()",myList)
+        localStorage.setItem("myList", JSON.stringify(myList));
+    };
+
+    function reloadJSONData(){
+        console.log("this", this)
+        fetch(jsonUrl)
+        .then(resp => resp.json())
+        .then(jsonData => {
+            myList = jsonData;
+            maker();
+            saveToStorage();
+        });
     };
 
     // ====================================================

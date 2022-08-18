@@ -13,6 +13,28 @@
     box-sizing: border-box;
 }
 
+button {
+    display: block;
+    background: green;
+    padding: 20px;
+    border: none;
+    width: 100vw;
+    color: white;
+    font-size: 1.1rem;
+}
+
+button:hover {
+    cursor: pointer;
+    background: #016301;
+    
+}
+
+h1 {
+    /* margin: 0px auto; */
+    text-align: center;
+    font-family: var(--arial)
+}
+
 .userInfo {
     background: var(--standard-blue-bg);
     margin: 10px;
