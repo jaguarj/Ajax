@@ -73,8 +73,8 @@
         "first_name": "mike",
         "last_name": "douglas",
         "age": 30,
-        "friends": 12,
-        "status": false,
+        "friends": 254,
+        "status": true,
         "social_media": [
             {
                 "type": "facebook",

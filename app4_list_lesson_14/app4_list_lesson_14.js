@@ -8,20 +8,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const jsonUrl = "/app4_list_lesson_14/app4_list_lesson_14.json";
     const output = document.querySelector(".output");
     output.textContent = "Loading...";
+    
+    // Making myList lesson 15.
+    let myList = [];
+    let localData = localStorage.getItem("myList");
 
-    function getJson() {
+    if(localData) {
+        myList = JSON.parse(localStorage.getItem("myList"));
+        maker();
+    } else {
         fetch(jsonUrl)
         .then(resp => resp.json())
         .then(jsonData => {
-            console.log(jsonData)
-            output.innerHTML = "";
-            jsonData.forEach(elm => {
-                makeList(elm);
-            })
-        })
+            myList = jsonData;
+            maker();
+            localStorage.setItem("myList", JSON.stringify(myList));
+        });
     }
 
-    getJson();
+    // function getJson() {
+    //     fetch(jsonUrl)
+    //     .then(resp => resp.json())
+    //     .then(jsonData => {
+    //         myList = jsonData;
+    //         maker();
+    //     })
+
+    //     console.log("myList data: ",myList)
+    // }
+
+    // getJson();
+
+    function maker(){
+        output.innerHTML = "";
+        myList.forEach(elm => {
+            makeList(elm);
+        });
+    }
 
     function makeList(item){
         const div = document.createElement("div");
@@ -31,43 +54,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if (item.status === true) {
             div.classList.add("active");
         }
-       
+        // Username format   
         div.innerHTML = `<span>${formatUsername(item.first_name, item.last_name)}</span>`;
-
+        // Friends list/count
         const divFriends = document.createElement("div");
         divFriends.id = `${item.id}_user_friends_list`;
         divFriends.classList = "friendsList";
         divFriends.innerHTML = `<span>Friends: </span> <span class="friendsCount">${item.friends}</span>`;
-
-       const formatUserSocialMedia = (social) => {
-            let html = 
-            '<ul>' +
-                social.map(function (link) {
-                    console.log('link', link)
-                    return `<li>${link.type}: <a href=#>${link.handle}</a></li>`;
-                }).join('') +
-            '</ul>';
-
-            return html
-        }
-
+        // Social Media formatting
         const divSocialMedia = document.createElement("div");
         divSocialMedia.id = `${item.id}_user_social_media_list`;
         divSocialMedia.classList = "socialMediaList";
-        divSocialMedia.innerHTML = `<span>Social Media: </span> <div class="socialMedia">${formatUserSocialMedia(item.social_media)}</div>`;
-
+        divSocialMedia.innerHTML = `<span>Social Media: </span> <ul class="socialMedia">${formatUserSocialMedia(item.social_media)}</ul>`;
+        // Appended elements
         output.append(div);
         div.append(divFriends);
         div.append(divSocialMedia);
-
-
-
-        // const userDiv = document.querySelectorAll(".userInfo")
-        // userDiv.appendChild(friendsContainer);
-
-
-        
-    }
+    };
 
     // Helper Functions ==================================
 
@@ -86,12 +89,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         + lastName.slice(1,lastName.length);
         // console.log(fN, lN)
         return `User: ${formattedUsername}`
-    }
+    };
+
+    function formatUserSocialMedia(social) {
+        let html = 
+            social.map(function(link) {
+                return `<li><a href="${link.handle}">${link.type}</a></li>`;
+            }).join("");
+
+        return html
+    };
 
     // ====================================================
-
-
-
 });
 
 

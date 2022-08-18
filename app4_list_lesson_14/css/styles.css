@@ -8,10 +8,8 @@
     --standard-blue-bg: cornflowerblue;
 }
 
-body, ::before, ::after {
+*, ::before, ::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 .userInfo {
@@ -36,7 +34,7 @@ body, ::before, ::after {
 @keyframes active-user {
     0% {border-left: 0px solid green;}
     100% {border-left: 10px solid green;}
-};
+}
 
 
 
