@@ -12,8 +12,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const reloadBtn = document.createElement("button");
     reloadBtn.setAttribute("type", "button")
     reloadBtn.textContent = "Reload JSON Data";
-    document.body.prepend(reloadBtn)
     reloadBtn.addEventListener("click",reloadJSONData);
+
+    const input1 = document.createElement("input");
+    input1.setAttribute("placeholder", "Name");
+
+    const input2 = document.createElement("input");
+    input2.setAttribute("type", "number");
+    input2.value = "20";
+
+    const addBtn = document.createElement("button");
+    addBtn.classList = "add-btn";
+    addBtn.textContent = "Add to List";
+    addBtn.addEventListener("click", addToList);
+    const addContainer = document.createElement("div");
+    addContainer.classList = "add-container";
+    addContainer.append(input1, input2, addBtn);
+
+    document.body.prepend(addContainer);
+    document.body.prepend(reloadBtn);
+
 
     // Making myList lesson 15.
     let myList = [];
@@ -31,14 +49,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
             saveToStorage();
         });
     }
-
+    // Make list maker
     function maker(){
         output.innerHTML = "";
         myList.forEach((elm,index) => {
             makeList(elm, index);
         });
     };
-
+    // Make list DOM
     function makeList(item, index){
         const div = document.createElement("div");
         div.id = `${item.id}_user`;
@@ -84,7 +102,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const removeBtnContainer = document.createElement("div");
         removeBtnContainer.classList = "remove-btn-container";
         div.append(removeBtnContainer);
-        
+
         const removeBtn = document.createElement("span");
         removeBtn.classList = "remove-btn";
         removeBtn.textContent = "Delete";
@@ -125,6 +143,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }).join("");
 
         return html
+    };
+
+    function addToList(){
+        console.log(input1.value, input2.value)
+
+        let obj = {
+            "id": 123,
+            "first_name": input1.value,
+            "last_name": "seipel",
+            "age": input2.value,
+            "friends": 5,
+            "status": false,
+            "social_media": [
+                {
+                    "type": "facebook",
+                    "handle": "https://facebook.com/josh"
+                },
+                {
+                    "type": "twitter",
+                    "handle": "https://twitter.com/josh"
+                },
+                {
+                    "type": "github",
+                    "handle": "https://github.com/jaguarj"
+                }
+            ]
+        };
+
+        const listLengthVal = myList.length
+        myList.push(obj);
+        saveToStorage()
+        makeList(obj, listLengthVal);
+        obj = {};
+
     };
 
     function saveToStorage(){

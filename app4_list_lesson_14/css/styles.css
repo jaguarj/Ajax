@@ -37,6 +37,16 @@ h1 {
     font-family: var(--arial)
 }
 
+.add-container {
+    margin-top: var(--margin-top-10px);
+    display: flex;
+    
+}
+
+.add-container button {
+    background: rgb(150, 100, 249);
+}
+
 .user-info {
     /* background: var(--standard-blue-bg); */
     margin: 10px;
