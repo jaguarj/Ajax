@@ -86,12 +86,16 @@ h1 {
     color: rgb(86, 2, 252);
 }
 
-.active a:hover {
+.active a:hover, .active a:active {
     color: rgb(121, 58, 248);
 }
 
 .active a:visited {
     color: rgb(150, 100, 249);
+}
+
+.active a:focus {
+    color: red;
 }
 
 .inactive {
