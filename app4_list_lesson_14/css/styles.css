@@ -40,11 +40,21 @@ h1 {
 .add-container {
     margin-top: var(--margin-top-10px);
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-container input {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0px;
+
 }
 
 .add-container button {
     background: rgb(150, 100, 249);
+    display: inline-block;
+    width: auto;
 }
 
 .user-info {
