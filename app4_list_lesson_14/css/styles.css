@@ -5,8 +5,10 @@
     --active-status: #3FD99B;
     --active-status-border: cornflowerblue;
 
-    --standard-blue-bg: cornflowerblue;
-    --standard-red: red;
+    /* --standard-blue-bg: cornflowerblue; */
+    --standard-red: rgb(253, 43, 43);
+
+    --margin-top-10px: 10px;
 }
 
 *, ::before, ::after {
@@ -15,69 +17,112 @@
 
 button {
     display: block;
-    background: green;
+    background: #3da27d;
+    /* background: #4ea484; */
     padding: 20px;
     border: none;
-    width: 100vw;
+    width: 100%;
     color: white;
     font-size: 1.1rem;
+    border-radius: 30px;
 }
 
 button:hover {
     cursor: pointer;
-    background: #016301;
-    
+    background: #7d39cb;
 }
 
 h1 {
-    /* margin: 0px auto; */
     text-align: center;
     font-family: var(--arial)
 }
 
-.userInfo {
-    background: var(--standard-blue-bg);
+.user-info {
+    /* background: var(--standard-blue-bg); */
     margin: 10px;
     padding: 10px;
     border-radius: 2px;
     font-family:  var(--arial);
     font-size: 1.1rem;
-    color: var(--font-color-white)
+    color: var(--font-color-white);
+    color: black;
 }
 
-.userInfo .friendsList {
-    margin-top: 10px;
+.user-info .friends-list {
+  margin-top: var(--margin-top-10px);
 }
 
-.userInfo .remove-btn {
+.user-info .remove-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-info .remove-btn {
     background: var(--standard-red);
     padding: 10px;
     width: auto;
-    border-radius: 50px;
-    border: 2px solid var(--standard-red);
+    border-radius: 2px;
     display: inline-block;
     margin: 10px 0px;
+    color: white;
 }
 
-.remove-btn:hover {
-    background: white;
-    color: var(--standard-red);
+.user-info .remove-btn:hover {
+    background: rgb(228, 47, 47);
     cursor: pointer;
 }
 
 .active {
-    background: var(--active-status);
+    /* background: var(--active-status); */
+    background: white;
+    border-top: 1px solid #3da27d;
+    border-right: 1px solid #3da27d;
+    border-bottom: 1px solid #3da27d;
     animation: active-user .3s cubic-bezier(.41,0,.61,.99) forwards alternate;
 }
 
+.active a {
+    text-decoration: none;
+    color: rgb(86, 2, 252);
+}
+
+.active a:hover {
+    color: rgb(121, 58, 248);
+}
+
+.active a:visited {
+    color: rgb(150, 100, 249);
+}
+
 .inactive {
-    background: coral;
+    background: #d0d0cf;
+    border-left: 10px solid #757574;
+}
+
+.inactive a {
+    color: black;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.inactive .remove-btn {
+    background: black;
+    border: none;
+    pointer-events: none;
+    /* border: 2px solid white; */
 }
 
 @keyframes active-user {
-    0% {border-left: 0px solid green;}
-    100% {border-left: 10px solid green;}
+    0% {border-left: 0px solid #3da27d;}
+    100% {border-left: 10px solid #3da27d;}
 }
 
+.social-media-list {
+    margin-top: var(--margin-top-10px);
+}
+
+ol.social-media li {
+    margin: 4px 0px;
+}
 
 

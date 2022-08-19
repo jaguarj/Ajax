@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function makeList(item, index){
         const div = document.createElement("div");
         div.id = `${item.id}_user`;
-        div.classList = "userInfo";
+        div.classList = "user-info";
 
         if (item.status === true) {
             div.classList.add("active");
@@ -68,23 +68,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // Friends list/count
         const divFriends = document.createElement("div");
         divFriends.id = `${item.id}_user_friends_list`;
-        divFriends.classList = "friendsList";
-        divFriends.innerHTML = `<span>Friends: </span> <span class="friendsCount">${item.friends}</span>`;
+        divFriends.classList = "friends-list";
+        divFriends.innerHTML = `<span>Friends: </span> <span class="friends-count">${item.friends}</span>`;
         // Social Media formatting
         const divSocialMedia = document.createElement("div");
         divSocialMedia.id = `${item.id}_user_social_media_list`;
-        divSocialMedia.classList = "socialMediaList";
-        divSocialMedia.innerHTML = `<span>Social Media: </span> <ul class="socialMedia">${formatUserSocialMedia(item.social_media)}</ul>`;
+        divSocialMedia.classList = "social-media-list";
+        divSocialMedia.innerHTML = `<span>Social Media: </span> <ol class="social-media">${formatUserSocialMedia(item.social_media)}</ol>`;
         // Appended elements
         output.append(div);
         div.append(divFriends);
         div.append(divSocialMedia);
 
         // Remove item from list
+        const removeBtnContainer = document.createElement("div");
+        removeBtnContainer.classList = "remove-btn-container";
+        div.append(removeBtnContainer);
+        
         const removeBtn = document.createElement("span");
         removeBtn.classList = "remove-btn";
         removeBtn.textContent = "Delete";
-        div.append(removeBtn);
+        removeBtnContainer.append(removeBtn);
         removeBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             console.log(index)
@@ -92,7 +96,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             div.remove();
             myList.splice(index, 1)
             saveToStorage();
-
         })
     };
 
