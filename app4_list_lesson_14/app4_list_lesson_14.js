@@ -158,6 +158,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function addToList(){
         console.log(input1.value, input2.value)
 
+        if (input1.value === "" || input2.value === "" ) {
+            alert("Input values cannot be blank.")
+            return
+        }
+
         let obj = {
             "id": 123,
             "first_name": input1.value,
