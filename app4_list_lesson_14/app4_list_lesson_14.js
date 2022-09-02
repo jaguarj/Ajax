@@ -36,17 +36,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Making myList lesson 15.
     let myList = [];
     let localData = localStorage.getItem("myList");
+    console.log("localstorage", localStorage)
 
     if(localData) {
         myList = JSON.parse(localStorage.getItem("myList"));
         maker();
     } else {
         fetch(jsonUrl)
-        .then(resp => resp.json())
-        .then(jsonData => {
-            myList = jsonData;
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            return response.json();
+        })
+        .then((response) => {
+            myList = response;
             maker();
             saveToStorage();
+        })
+        .catch((error) => {
+            console.error('There has been a problem with your fetch operation: ', error);
         });
     }
     // Make list maker
@@ -200,7 +210,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         })
         .catch((error) => {
             console.error('There has been a problem with your fetch operation: ', error);
-        })
+        });
     };
 
     // ====================================================
