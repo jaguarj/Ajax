@@ -185,14 +185,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
     };
 
     function reloadJSONData(){
-        console.log("this", this)
         fetch(jsonUrl)
-        .then(resp => resp.json())
-        .then(jsonData => {
-            myList = jsonData;
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            return response.json();
+        })
+        .then((response) => {
+            myList = response;
             maker();
             saveToStorage();
-        });
+        })
+        .catch((error) => {
+            console.error('There has been a problem with your fetch operation: ', error);
+        })
     };
 
     // ====================================================
